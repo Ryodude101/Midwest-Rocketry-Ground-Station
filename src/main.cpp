@@ -1,16 +1,29 @@
+
 #include "Declarations.h"
+#include <Setup.h>
+#include <Loop.h>
+#include <Testing.h>
 
 
-char received = 'received';
+SoftwareSerial xbee(2, 3); // RX, TX
+struct led_display_state state;
+
+
+char received = 'a';// = 'received';
 /////////////////////
+
+
+#include "Wire.h"
+
 
 
 void setup() {
 
     pinModes();
 
-    //Serial.begin(57600);
-    //Serial.println( "Arduino started sending bytes via XBee" );
+
+    Serial.begin(9600);
+    Serial.println( "Arduino started sending bytes via XBee" );
 
     // set the data rate for the SoftwareSerial port
     //xbee.begin( 19200 );
@@ -19,6 +32,9 @@ void setup() {
 
 
 void loop() {
+
+
+    alphabet();
 
     //if (Serial.available())
     //{ // If data comes in from serial monitor, send it out to XBee
@@ -29,26 +45,36 @@ void loop() {
       //Serial.write(xbee.read());
     //}
     if(xbee.isListening()) {
-        digitalWrite(12, HIGH);
-        delay(1000);
     }
 
     if(xbee.read() == -1) {
-        digitalWrite(12, LOW);
+        delay(400);
     }
 
 
     if(xbee.available() > 0) {
-        digitalWrite(13, HIGH);
         delay(1000);
         xbee.print( received );
+        Serial.print( received );
     }
 
-    delay(150);
-    digitalWrite(13, LOW);
-    digitalWrite(12, LOW);
+    //all_high();
+    //update_display();
+    //delay(150);
+    //analogWrite(0, 0);
+    //analogWrite(1, 0);
+    //analogWrite(2, 0);
+    //analogWrite(3, 0);
+    //analogWrite(4, 0);
+    //analogWrite(5, 0);
+    //delay(400);
+    //all_low();
+    //update_display();
+    //delay(500);
     //Serial.print('H');
     //delay(100);
     //Serial.print('L');
+
+    received = xbee.read();
 
 }

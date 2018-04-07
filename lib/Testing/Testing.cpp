@@ -1,6 +1,6 @@
 #include "Testing.h"
 
-
+char c = 'A';
 
 
 void all_high() {
@@ -16,18 +16,43 @@ void all_high() {
     state.TFC_3_led_G = 1;
     state.TFC_3_led_B = 1;
 
-    state.TFR_led_R = 1;
-    state.TFR_led_G = 1;
-    state.TFR_led_B = 1;
-
-    //state.signal_strength_led = 1;     //needs to be something not bool
-    state.signal_connection_led = 1;
-
-    state.active_roll_led = 1;
-    state.emergency_dump_led = 1;
-
     state.button_switch_port_1 = 1;
     state.button_switch_port_2 = 1;
+
+    state.active_roll_led = 1;
+    state.emergency_dump_led = 255;
+
+    state.signal_strength_R = 255;
+    state.signal_strength_G = 255;
+    state.signal_strength_B = 255;
+}
+
+void all_low() {
+    state.TFC_1_led_R = 0;
+    state.TFC_1_led_G = 0;
+    state.TFC_1_led_B = 0;
+
+    state.TFC_2_led_R = 0;
+    state.TFC_2_led_G = 0;
+    state.TFC_2_led_B = 0;
+
+    state.TFC_3_led_R = 0;
+    state.TFC_3_led_G = 0;
+    state.TFC_3_led_B = 0;
+
+    state.TFR_led_R = 0;
+    state.TFR_led_G = 0;
+    state.TFR_led_B = 0;
+
+    state.button_switch_port_1 = 0;
+    state.button_switch_port_2 = 0;
+    
+    state.active_roll_led = 0;
+    state.emergency_dump_led = 0;
+
+    state.signal_strength_R = 0;
+    state.signal_strength_G = 0;
+    state.signal_strength_B = 0;
 }
 
 void alphabet() {
